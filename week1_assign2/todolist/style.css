@@ -1,0 +1,113 @@
+/*폰트, 배경 설정*/
+@font-face {
+    font-family: 'Orbit-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height:100vh;
+    background: linear-gradient(to bottom, lightpink 30%, antiquewhite);
+    font-family: 'Orbit-Regular';
+}
+
+/* header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+}
+
+.title {
+    color: white;
+}
+
+.search__input {
+    width: 200px;
+    height: 35px;
+
+    border: none;
+    border-radius: 10px;
+} /* BEM 사용 (2) 요소 */
+
+.search__btn {
+    width: 40px;
+    height: 35px;
+
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+
+    color: white;
+    background-color: antiquewhite;
+} /* BEM 사용 (2) 요소 */
+
+/* main */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    margin: 50px;
+    text-align: center;
+}
+
+/* card */
+@keyframes cardscale {
+    0% {
+      transform:scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+
+.card {
+    display: flex;
+    align-items:center;
+    position: relative;
+
+    width: 250px;
+    height: 50px;
+
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    background-color: aliceblue;
+
+    animation: cardscale 1.5s linear infinite;
+}
+
+.card__content {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} /* BEM 사용 (2) 요소 */
+
+.card__btn {
+    position: absolute;
+    right: 20px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border: none;
+
+    text-align: center;
+    background-color: lightpink;
+    color: aliceblue;
+} /* BEM 사용 (2) 요소 */
+
+
+
+
+
+
