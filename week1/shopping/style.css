@@ -87,7 +87,8 @@ main {
 
 /* 이미지 배너 */
 .image_box {
-    height: 150px;
+    width: 1000px;
+    height: 130px;
     margin-top: 20px;
     display: flex;
     overflow: hidden;
