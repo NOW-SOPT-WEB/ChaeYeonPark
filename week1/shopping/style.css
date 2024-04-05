@@ -77,9 +77,6 @@ header {
 /* main */
 main {
     width: 75vw;
-    position: sticky;
-    left: 300px;
-    right: 300px;
 
     display: flex;
     flex-direction: column;
@@ -87,8 +84,7 @@ main {
 
 /* 이미지 배너 */
 .image_box {
-    width: 1000px;
-    height: 130px;
+    height: 150px;
     margin-top: 20px;
     display: flex;
     overflow: hidden;
@@ -96,7 +92,6 @@ main {
 
 .image_roll {
     display: flex;
-    width: 100%;
     animation: imagemove 10s linear infinite;
 } /* OOCSS 적용 (2) image_roll 공통속성 */
 
@@ -181,7 +176,16 @@ color: red;
 }
 
 /* product 반응형 */
+@media screen and (max-width: 1100px){
+    main {
+        width: 70vw;
+    }
+}
+
 @media screen and (max-width: 900px){
+    main {
+        width: 65vw;
+    }
     .product {
         width: 250px;
         height: 400px;
@@ -192,6 +196,9 @@ color: red;
 }
 
 @media screen and (max-width: 742px) {
+    main {
+        width: 55vw;
+    }
     .product {
         width: 300px;
         height: 450px;
@@ -200,6 +207,7 @@ color: red;
         width: 250px;
     }
 }
+
 
 /* footer */
 .footer {
