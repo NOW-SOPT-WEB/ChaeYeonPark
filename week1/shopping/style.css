@@ -1,9 +1,7 @@
 /* 전체 틀 */
 body {
-    width: 100vw;
-    margin: 0px;
+    margin: 0rem;
     background-color:antiquewhite;
-    scrollbar-width: none;
 }
 
 /* header */
@@ -11,14 +9,16 @@ header {
     display: flex;
     justify-content:space-between;
     align-items: center;
-
-    position: sticky;
-    top: 0px;
+    position: fixed;
+    top: 0rem;
+    width: 100%;
     z-index: 1;
-
-    padding-left: 30px;
-    padding-right: 30px;
     background-color:saddlebrown;
+}
+
+header i {
+    color: burlywood;
+    margin: 20px;
 }
 
 .title {
@@ -39,26 +39,24 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    position: sticky;
-    top: 110px;
-    left: 20px;
-
-    min-width: 200px;
-    height: 300px;
-    margin: 20px 50px 20px 20px;
+    position: fixed;
+    top: 8rem;
+    left: 2rem;
+    min-width: 12rem;
+    height: 20rem;
+    margin-right: 5rem;
 }
 
 .nav-skin {
     background-color: floralwhite;
-    border-radius: 10px;
+    border-radius: 0.5rem;
 } /* OOCSS 적용 (1) nav와 nav-skin */
 
 .nav .a {
-    margin: 5px 0px 5px 0px;
-    width: 100px;
-    border-radius: 20px;
-    padding: 10px 20px 10px 20px;
+    margin: 0.4rem 0px 0.4rem 0px;
+    width: 6rem;
+    border-radius: 6rem;
+    padding: 0.8rem 1.6rem 0.8rem 1.6rem;
 }
 
 .nav .a-skin {
@@ -76,17 +74,16 @@ header {
 
 /* main */
 main {
-    width: 75vw;
-
     display: flex;
     flex-direction: column;
+    padding-top: 8rem;
+    padding-left: 17rem;
 }
 
 /* 이미지 배너 */
 .image_box {
-    height: 150px;
-    margin-top: 20px;
     display: flex;
+    width: 68rem;
     overflow: hidden;
 }
 
@@ -96,7 +93,8 @@ main {
 } /* OOCSS 적용 (2) image_roll 공통속성 */
 
 .image_roll img {
-    margin-right: 10px;
+    height: 9rem;
+    margin-right: 0.7rem;
 }
 
 .image_box:last-child {
@@ -114,41 +112,92 @@ main {
 
 /* 상품 나열 */
 section {
-    padding-top: 75px;
+    padding-top: 5rem;
 }
 
 .category {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 1.2rem;
 }
 
 .product {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    width: 200px;
-    height: 350px;
-
-    margin-right: 10px;
-    margin-bottom: 20px;
+    width: 13rem;
+    height: 23rem;
+    margin-bottom: 1rem;
 }
 
 .product-skin {
     background-color:floralwhite;
-    border-radius: 10px;
+    border-radius: 0.5rem;
 } /* OOCSS 적용 (1) product와 product-skin */
 
 .product img {
-    width: 150px;
-    margin-top: 20px;
-    border-radius: 10px;
+    width: 10rem;
+    margin: 1.2rem;
+    border-radius: 0.5rem;
 }
 
 .product button {
     background-color: transparent;
     border: none;
 }
+
+/* product 반응형 */
+@media screen and (max-width: 1350px) {
+    .category {
+        grid-template-columns: repeat(4, 200px);
+    }
+    .image_box {
+        width: 54rem;
+    }
+}
+
+@media screen and (max-width: 1140px) {
+    .category {
+        grid-template-columns: repeat(3, 200px);
+    }
+    .image_box {
+        width: 40.5rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .category {
+        grid-template-columns: repeat(2, 250px);
+    } 
+    .product {
+        width: 16rem;
+        height: 25rem;
+    }
+    .product img {
+        width: 12rem;
+    }
+    .image_box {
+        width: 33rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .category {
+        grid-template-columns: repeat(1, 1fr); 
+    }
+    .product {
+        width: 18rem;
+        height: 27rem;
+    }
+    .product img {
+        width: 13rem;
+    }
+    .image_box {
+        width: 18rem;
+    }
+}
+
+
 
 /* product hover 적용*/
 .product:hover {
@@ -167,46 +216,11 @@ section {
       }
 }
 
-.product button:hover {
-color: red;
-}
-
+.product button:hover,
 .product button:active {
     color: red;
 }
 
-/* product 반응형 */
-@media screen and (max-width: 1100px){
-    main {
-        width: 70vw;
-    }
-}
-
-@media screen and (max-width: 900px){
-    main {
-        width: 65vw;
-    }
-    .product {
-        width: 250px;
-        height: 400px;
-    }
-    .product :first-child {
-        width: 200px;
-    }
-}
-
-@media screen and (max-width: 742px) {
-    main {
-        width: 55vw;
-    }
-    .product {
-        width: 300px;
-        height: 450px;
-    }
-    .product :first-child{
-        width: 250px;
-    }
-}
 
 
 /* footer */
@@ -216,7 +230,7 @@ color: red;
     align-items: center;
     justify-content: center;
 
-    height: 300px;
+    height: 15rem;
     text-align: center;
 } 
 
