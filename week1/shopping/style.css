@@ -111,8 +111,10 @@ main {
 }
 
 /* 상품 나열 */
-section {
-    padding-top: 5rem;
+.section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    scroll-margin-top: 5rem;
 }
 
 .category {
@@ -136,7 +138,7 @@ section {
 } /* OOCSS 적용 (1) product와 product-skin */
 
 .product img {
-    width: 10rem;
+    width: 80%;
     margin: 1.2rem;
     border-radius: 0.5rem;
 }
@@ -173,9 +175,6 @@ section {
         width: 16rem;
         height: 25rem;
     }
-    .product img {
-        width: 12rem;
-    }
     .image_box {
         width: 33rem;
     }
@@ -188,9 +187,6 @@ section {
     .product {
         width: 18rem;
         height: 27rem;
-    }
-    .product img {
-        width: 13rem;
     }
     .image_box {
         width: 18rem;
