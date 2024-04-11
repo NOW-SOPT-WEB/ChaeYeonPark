@@ -89,7 +89,7 @@ main {
 
 .image_roll {
     display: flex;
-    animation: imagemove 10s linear infinite;
+    animation: imagemove 10s linear infinite; 
 } /* OOCSS 적용 (2) image_roll 공통속성 */
 
 .image_roll img {
