@@ -112,15 +112,13 @@ main {
 
 /* 상품 나열 */
 .section {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    scroll-margin-top: 5rem;
-}
-
-.category {
     display: grid;
     grid-template-columns: repeat(5, 200px);
     gap: 1.2rem;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    scroll-margin-top: 5rem;
 }
 
 .product {
