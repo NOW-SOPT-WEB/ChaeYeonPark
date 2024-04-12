@@ -1,0 +1,66 @@
+/* 전체 틀 */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0rem;
+    background-color:antiquewhite;
+}
+
+/* header */
+header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    position: fixed;
+    top: 0rem;
+    width: 100%;
+    z-index: 1;
+    background-color:saddlebrown;
+}
+
+.btn-header {
+    margin: 20px;
+    border: none;
+    background-color: transparent;
+    color: burlywood;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    color: burlywood;
+}
+
+/*cart css*/
+.table_style {
+    width: 60rem;
+    max-height: 19rem;
+    margin: 10rem;
+    overflow-y: scroll;
+}
+
+table {
+    border: 10px;
+    text-align: center;
+}
+
+table th {
+    position: sticky;
+    top: 0rem;
+    width: 10rem;
+    height: 3rem;
+    color: saddlebrown;
+    background-color: bisque;
+}
+
+table td {
+    width: 10rem;
+    height: 4rem;
+    background-color:floralwhite;
+}
+
+.btn_style {
+    display: flex;
+    justify-content: center;
+}

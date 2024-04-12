@@ -90,3 +90,5 @@ navBtnAll.addEventListener("click", () => {allProduct()});
 navBtnBaguette.addEventListener("click", () => {filterProduct(baguette)});
 navBtnPastry.addEventListener("click", () => {filterProduct(pastry)});
 navBtnBread.addEventListener("click", () => {filterProduct(bread)});
+
+

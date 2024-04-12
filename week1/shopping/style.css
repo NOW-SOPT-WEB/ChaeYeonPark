@@ -16,9 +16,11 @@ header {
     background-color:saddlebrown;
 }
 
-header i {
-    color: burlywood;
+.btn-header {
     margin: 20px;
+    border: none;
+    background-color: transparent;
+    color: burlywood;
 }
 
 .title {
