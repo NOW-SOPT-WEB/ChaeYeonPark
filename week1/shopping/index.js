@@ -91,4 +91,5 @@ navBtnBaguette.addEventListener("click", () => {filterProduct(baguette)});
 navBtnPastry.addEventListener("click", () => {filterProduct(pastry)});
 navBtnBread.addEventListener("click", () => {filterProduct(bread)});
 
-
+//item 누르면 alert 뜨게
+//article에 click 이벤트를 넣어줍니다.

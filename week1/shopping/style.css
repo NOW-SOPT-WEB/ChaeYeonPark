@@ -29,6 +29,29 @@ header {
     color: burlywood;
 } /* OOCSS 적용 (2) title 공통속성 */
 
+.menu {
+    display: flex;
+    flex-direction: column;
+    
+    position: fixed;
+    top: 0;
+
+    width: 20rem;
+    height: 100%;
+    z-index: 2;
+
+    background-color: aquamarine;
+}
+
+.menuOff {
+    right: -20rem;
+    transition: right 1s ease;
+}
+
+.menuOn {
+    right: 0rem;
+    transition: right 1s ease;
+}
 
 /* 화면 중간 부분 컨테이너 (nav + main)*/
 .container {
