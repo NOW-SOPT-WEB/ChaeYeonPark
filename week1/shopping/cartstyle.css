@@ -32,6 +32,46 @@ header {
     color: burlywood;
 }
 
+/*사이드 메뉴바*/
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 20rem;
+    height: 100%;
+    z-index: 2;
+    background-color: floralwhite;
+}
+
+.menu button {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    border: none;
+    border-radius: 1rem;
+    color: saddlebrown;
+    background-color: transparent;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.menu button:hover {
+    color:burlywood;
+}
+
+/*메뉴바 숨어있게*/
+.menuOff {
+    right: -20rem;
+    transition: right 1s ease;
+}
+
+/*메뉴바 나오게*/
+.menuOn {
+    right: 0rem;
+    transition: right 1s ease;
+}
+
 /*cart css*/
 .table_style {
     width: 60rem;

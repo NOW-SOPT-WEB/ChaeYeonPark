@@ -19,5 +19,8 @@ let cartProductCard = cartProducts.map(product => {
 });
 
 tableClass.innerHTML += cartProductCard.join('');
+//+= 하니까 덮어 써지지 않음.
 
+//버튼 클릭하면 삭제
 
+//구매하기 버튼 (체크 구현)
