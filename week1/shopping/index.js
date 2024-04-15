@@ -93,3 +93,12 @@ navBtnBread.addEventListener("click", () => {filterProduct(bread)});
 
 //item 누르면 alert 뜨게
 //article에 click 이벤트를 넣어줍니다.
+//동적으로 생성된 article이므로 이벤트 위임 진행
+productSection.addEventListener("click", event => {
+    const evTarget = event.target;
+    if (evTarget.classList.contains("product")){
+        confirm(`
+        선택한 상품을 장바구니에 담으시겠습니까?
+        `);
+    }
+});
