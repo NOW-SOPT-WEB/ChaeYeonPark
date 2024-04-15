@@ -94,11 +94,29 @@ navBtnBread.addEventListener("click", () => {filterProduct(bread)});
 //item 누르면 alert 뜨게
 //article에 click 이벤트를 넣어줍니다.
 //동적으로 생성된 article이므로 이벤트 위임 진행
+let productCart = JSON.parse(localStorage.getItem('cartproducts')) || []; //기존 정보 로드 + 새 정보를 위해.
+
 productSection.addEventListener("click", event => {
     const evTarget = event.target;
     if (evTarget.classList.contains("product")){
-        confirm(`
-        선택한 상품을 장바구니에 담으시겠습니까?
+
+        const productName = evTarget.querySelector("h4").textContent;
+        // Array.find()를 사용하여 이름이 일치하는 객체를 찾아서 배정.
+        const productInfo = PRODUCTS_LIST.find(product => product.name === productName);
+
+        const confirmed = confirm(`
+        ${productName} 상품을 장바구니에 담으시겠습니까?
         `);
+
+        if (confirmed) {
+            console.log("장바구니 이동");
+            //선택한 상품의 객체 정보를 배열에 넣습니다.
+            productCart.push(productInfo);
+            //배열을 localStorage에 보냅니다.
+            localStorage.setItem('cartproducts', JSON.stringify(productCart));
+        } else {
+            console.log("취소 클릭");
+        }
     }
 });
+

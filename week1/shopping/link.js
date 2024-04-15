@@ -22,3 +22,6 @@ xBtn.addEventListener("click", () => {
     menuBar.classList.remove("menuOn");
     menuBar.classList.add("menuOff");
 });
+
+
+
