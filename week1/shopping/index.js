@@ -94,7 +94,7 @@ navBtnBread.addEventListener("click", () => {filterProduct(bread)});
 //item 누르면 alert 뜨게
 //article에 click 이벤트를 넣어줍니다.
 //동적으로 생성된 article이므로 이벤트 위임 진행
-let productCart = JSON.parse(localStorage.getItem('cartproducts')) || []; //기존 정보 로드 + 새 정보를 위해.
+const productCart = JSON.parse(localStorage.getItem('cartproducts')) || []; //기존 정보 로드 + 새 정보를 위해.
 
 productSection.addEventListener("click", event => {
     const evTarget = event.target;
@@ -120,3 +120,4 @@ productSection.addEventListener("click", event => {
     }
 });
 
+console.log(productCart);
