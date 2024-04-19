@@ -13,7 +13,7 @@ cartBtn.addEventListener("click", () => {
 });
 
 barBtn.addEventListener("click", () => {
-    //menuOn 클래스명 바꿔주기
+    //menuOn 클래스명 바꿔주는 방식으로 menu 움직임 만들기
     menuBar.classList.remove("menuOff");
     menuBar.classList.add("menuOn");
 });
