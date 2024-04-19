@@ -16,11 +16,11 @@ const PRODUCTS_LIST = [
     {id: 14, name: "올리브치아바타", price: 5200, image: "img/Ciabatta.jpg", category: "bread"}
 ]
 
-//백틱으로 html 카드 내부 설정 후 
-//${}에 리스트 값 넣기
+//상품 넣기
 const productSection = document.querySelector(".section");
 
-//all일 경우.......
+
+//전체 상품 넣기
 const allProduct = function() {
     const productCards = PRODUCTS_LIST.map(product => {
         return `
@@ -35,12 +35,9 @@ const allProduct = function() {
     productSection.innerHTML = productCards.join('');
 };
 
-allProduct();
 
-//카테고리 필터링
+//카테고리 필터링 후 상품 넣기
 const filterProduct = function(category) {
-    //버튼 누르면 버튼에 해당하는 값과 category 값 비교
-    //filter 함수로 new 배열을 만들어서 그걸 매핑!!!!
     let newProduct = PRODUCTS_LIST.filter(function(item) {
         return (item.category === category);
     });
@@ -50,7 +47,7 @@ const filterProduct = function(category) {
         <article class="product product-skin">
             <img src="${product.image}" alt="${product.name}">
             <h4>${product.name}</h4>
-            <p>${product.price}원</p>
+            <p>${product.price.toLocaleString()}원</p>
             <button class="fa-solid fa-heart" type="button"></button>
         </article>
         `;
@@ -64,43 +61,45 @@ const navBtnBaguette = document.querySelector(".nav_baguette");
 const navBtnPastry = document.querySelector(".nav_pastry");
 const navBtnBread = document.querySelector(".nav_bread");
 
+
 //버튼 값이 nav_baguette면 -> 카테고리는 "baguette"로 설정
 const baguette = "baguette";
 const pastry = "pastry";
 const bread = "bread";
 
+
+//각 버튼에 따라 카테고리 내부 설정
 navBtnAll.addEventListener("click", () => {allProduct()});
 navBtnBaguette.addEventListener("click", () => {filterProduct(baguette)});
 navBtnPastry.addEventListener("click", () => {filterProduct(pastry)});
 navBtnBread.addEventListener("click", () => {filterProduct(bread)});
 
-//item 누르면 alert 뜨게
-//article에 click 이벤트를 넣어줍니다.
-//동적으로 생성된 article이므로 이벤트 위임 진행
+
+//장바구니에 담는 과정, 장바구니에 들어갈 product 배열 'productCart'
 const productCart = JSON.parse(localStorage.getItem('cartproducts')) || []; //기존 정보 로드 + 새 정보를 위해.
 
-productSection.addEventListener("click", event => {
+productSection.addEventListener("click", event => { //동적으로 생성된 article에 이벤트 위임 진행
     const evTarget = event.target;
     if (evTarget.classList.contains("product")){
 
         const productName = evTarget.querySelector("h4").textContent;
-        // Array.find()를 사용하여 이름이 일치하는 객체를 찾아서 배정.
-        const productInfo = PRODUCTS_LIST.find(product => product.name === productName);
-
+        const productInfo = PRODUCTS_LIST.find(product => product.name === productName); //배열.find()로 이름이 일치하는 객체 배정
+        
         const confirmed = confirm(`
         ${productName} 상품을 장바구니에 담으시겠습니까?
         `);
 
         if (confirmed) {
             console.log("장바구니 이동");
-            //선택한 상품의 객체 정보를 배열에 넣습니다.
             productCart.push(productInfo);
-            //배열을 localStorage에 보냅니다.
-            localStorage.setItem('cartproducts', JSON.stringify(productCart));
+            localStorage.setItem('cartproducts', JSON.stringify(productCart)); //localStorage에 보내기
         } else {
             console.log("취소 클릭");
         }
     }
 });
 
-console.log(productCart);
+
+//초기 화면은 전체 상품
+allProduct();
+

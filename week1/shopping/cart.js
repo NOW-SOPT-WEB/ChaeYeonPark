@@ -80,11 +80,11 @@ checkboxs.forEach((checkbox, index) => {
     checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
             checkedProduct.push(cartProducts[index]);
-            totalPrice += checkedProduct[index].price;
+            totalPrice += cartProducts[index].price;
         } else {
             const removedIndex = checkedProduct.indexOf(cartProducts[index]);
             if (removedIndex !== -1) {
-                totalPrice -= checkedProduct[index].price;
+                totalPrice -= cartProducts[index].price;
                 checkedProduct.splice(removedIndex, 1);
             }
         }
