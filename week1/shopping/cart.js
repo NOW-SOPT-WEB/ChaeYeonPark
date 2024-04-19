@@ -154,6 +154,8 @@ deleteBtns.forEach((deleteBtn, index) => {
 const modalBtnX = document.querySelector('.modal-btn-x');
 modalBtnX.addEventListener('click', () => {
     modal.classList.add('modalOff');
+    checkedProduct = [];
+
 })
 
 
