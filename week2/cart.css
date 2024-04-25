@@ -80,7 +80,7 @@ header {
     width: 60rem;
     max-height: 19rem;
     margin: 10rem;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 table {
