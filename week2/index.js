@@ -69,8 +69,6 @@ productSection.addEventListener("click", event => { //동적으로 생성된 art
         const productName = evTarget.querySelector("h4").textContent;
         const productId = parseInt(evTarget.closest("article").getAttribute("id"));
         const productInfo = PRODUCTS_LIST.find(product => product.id === productId); //배열.find()로 이름이 일치하는 객체 배정
-        console.log(productId);
-        console.log(productInfo);
         
         const confirmed = confirm(`
         ${productName} 상품을 장바구니에 담으시겠습니까?
