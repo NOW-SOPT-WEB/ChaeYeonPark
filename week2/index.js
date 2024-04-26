@@ -8,7 +8,7 @@ const productSection = document.querySelector(".section");
 const allProduct = function() {
     const productCards = PRODUCTS_LIST.map(product => {
         return `
-        <article class="product product-skin">
+        <article class="product product-skin" id="${product.id}">
             <img src="${product.image}" alt="${product.name}">
             <h4>${product.name}</h4>
             <p>${product.price.toLocaleString()}원</p>
@@ -22,13 +22,13 @@ const allProduct = function() {
 
 //카테고리 필터링 후 상품 넣기
 const filterProduct = function(category) {
-    let newProduct = PRODUCTS_LIST.filter(function(item) {
+    let filteredProduct = PRODUCTS_LIST.filter(function(item) {
         return (item.category === category);
     });
 
-    const newProductCard = newProduct.map(product => {
+    const filteredProductCard = filteredProduct.map(product => {
         return `
-        <article class="product product-skin">
+        <article class="product product-skin" id="${product.id}">
             <img src="${product.image}" alt="${product.name}">
             <h4>${product.name}</h4>
             <p>${product.price.toLocaleString()}원</p>
@@ -36,7 +36,7 @@ const filterProduct = function(category) {
         </article>
         `;
     });
-    productSection.innerHTML = newProductCard.join('');
+    productSection.innerHTML = filteredProductCard.join('');
 }
 
 //버튼 가져와서 버튼 값을 설정
@@ -67,7 +67,10 @@ productSection.addEventListener("click", event => { //동적으로 생성된 art
     if (evTarget.classList.contains("product")){
 
         const productName = evTarget.querySelector("h4").textContent;
-        const productInfo = PRODUCTS_LIST.find(product => product.name === productName); //배열.find()로 이름이 일치하는 객체 배정
+        const productId = parseInt(evTarget.closest("article").getAttribute("id"));
+        const productInfo = PRODUCTS_LIST.find(product => product.id === productId); //배열.find()로 이름이 일치하는 객체 배정
+        console.log(productId);
+        console.log(productInfo);
         
         const confirmed = confirm(`
         ${productName} 상품을 장바구니에 담으시겠습니까?

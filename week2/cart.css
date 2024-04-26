@@ -83,6 +83,12 @@ header {
     overflow-y: auto;
 }
 
+.cart-empty {
+    color: saddlebrown;
+    font-weight: bold;
+    text-align: center;
+}
+
 table {
     border: 10px;
     text-align: center;

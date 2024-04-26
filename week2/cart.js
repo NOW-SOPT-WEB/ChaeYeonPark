@@ -25,9 +25,7 @@ const tableStyle = document.querySelector(".table_style");
 if (cartProducts.length == 0) {
     const emptyCart = document.createElement('p');
     emptyCart.textContent = '장바구니가 비어있어요!';
-    emptyCart.style.color = 'saddlebrown';
-    emptyCart.style.fontWeight = 'bold';
-    emptyCart.style.textAlign = 'center';
+    emptyCart.classList.add('cart-empty');
     tableStyle.appendChild(emptyCart);
 };
 
@@ -63,14 +61,9 @@ checkboxAll.addEventListener('change', (event) => {
             totalPrice += product.price;
         }); 
 
-        console.log(checkedProduct);
-        console.log(totalPrice);
-
     } else {
         checkedProduct = [];
         totalPrice = 0;
-        console.log(checkedProduct);
-        console.log(totalPrice);
     };
 });
 
@@ -88,15 +81,14 @@ checkboxs.forEach((checkbox, index) => {
                 checkedProduct.splice(removedIndex, 1);
             }
         }
-        console.log(totalPrice);
-        console.log(checkedProduct[index]);
-        console.log(checkedProduct);
     });
 });
 
 
 //구매하기 버튼 누르면 모달창 생성
-buyBtn.addEventListener('click', () => {
+buyBtn.addEventListener('click', handleClickBuyBtn);
+
+const handleClickBuyBtn = () => {
     if (checkedProduct.length > 0) {
         console.log(checkedProduct);
         modal.classList.remove('modalOff');
@@ -104,7 +96,7 @@ buyBtn.addEventListener('click', () => {
         //토탈 금액 보여주기
         const showTotalPrice = document.querySelector('.modal-total');
         const totalPriceComma = totalPrice.toLocaleString()
-        showTotalPrice.innerHTML = `🪙 총금액 : ${totalPriceComma}`;
+        showTotalPrice.textContent = `🪙 총금액 : ${totalPriceComma}`;
 
         //구매할 상품 보여주기 (세미나 때 배운 DOM 조작 메서드)
         checkedProduct.forEach(product => {
@@ -114,6 +106,7 @@ buyBtn.addEventListener('click', () => {
             const modalDivImg = document.createElement('img');
             modalDivImg.style.width = '4rem';
             modalDivImg.src = product.image;
+            modalDivImg.alt = product.name;
 
             const modalDivName = document.createElement('p');
             modalDivName.style.fontSize = '0.8rem';
@@ -131,7 +124,7 @@ buyBtn.addEventListener('click', () => {
     } else {
         alert('구매할 상품을 선택하세요.')
     }
-})
+};
 
 //홈으로 버튼 클릭하면 홈으로
 const homeBtn = document.querySelector('.btn-home');
@@ -154,8 +147,6 @@ deleteBtns.forEach((deleteBtn, index) => {
 const modalBtnX = document.querySelector('.modal-btn-x');
 modalBtnX.addEventListener('click', () => {
     modal.classList.add('modalOff');
-    checkedProduct = [];
-
 })
 
 
