@@ -14,9 +14,10 @@ function Header() {
 export default Header;
 
 const HeaderWrapper = styled.div`
+display: flex;
+justify-content: center;
 width: 100%;
 height: 10rem;
 background-color:${({theme}) => theme.colors.green};
 color: ${({theme}) => theme.colors.white};
-
 `;

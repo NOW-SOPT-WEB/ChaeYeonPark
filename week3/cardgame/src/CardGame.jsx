@@ -2,23 +2,38 @@ import React from "react";
 import { useState } from "react";
 import { shuffleArray } from "./utils"
 import Card from "./Card";
+import styled from "@emotion/styled";
 
 const CardGame = () => {
-    const [cards, setCards] = useState(shuffleArray([...Array(6).keys()]));
+    const [cards1, setCards1] = useState(shuffleArray([...Array(5).keys()]));
+    const [cards2, setCards2] = useState(shuffleArray([...Array(5).keys()]));
 
     const handleCardClick = (index) => {
-
+        
     };
 
     return (
-        <div className="cardgame">
-            {cards.map((card, index) => (
-                <Card key={index} image={`./assets/img${card}.jpeg`} onClick={() => handleCardClick(index)} />
+        <>
+        <CardWrapper className="cardgame">
+            {cards1.map((card, index) => (
+                <Card key={index} image={`/img${card}.jpeg`} onClick={() => handleCardClick(index)} />
             ))}
-
-        </div>
+        </CardWrapper>
+        
+        <CardWrapper className="cardgame">
+            {cards2.map((card, index) => (
+                <Card key={index} image={`/img${card}.jpeg`} onClick={() => handleCardClick(index)} />
+            ))}
+        </CardWrapper>
+        </>
 
     );
 };
 
-export default CardGame
+export default CardGame;
+
+const CardWrapper = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+`
