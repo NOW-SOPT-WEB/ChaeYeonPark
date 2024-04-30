@@ -14,7 +14,7 @@ function shuffleArray(array) {
 
 //이미지 두개씩 랜덤으로 나오게 하는 함수
 function initializeCards() {
-    const imageFiles = [0, 1, 2, 3, 4, 5, 6];
+    const imageFiles = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
     const selectedImages = [];
     while (selectedImages.length < 5) {
@@ -35,13 +35,12 @@ const CardGame = () => {
     const [flippedCards, setFlippedCards] = useState([]);
     const [flippedIndex, setFlippedIndex] = useState([]);
     const [isFalse, setIsFalse] = useState(false);
-
-    let CardMatchCount = 0;
     
     const handleCardClick = (card, index) => {
         if (flippedCards.length < 2) {
             //펼쳐진 카드를 담는 배열 flippedCards에 추가하기 -> 인덱스 추가
             const newFlippedCards = [...flippedCards, card];
+            //인덱스를 담는 배열
             const newFlippedIndex = [...flippedIndex, index];
             setFlippedCards(newFlippedCards);
             setFlippedIndex(newFlippedIndex);
@@ -53,23 +52,21 @@ const CardGame = () => {
 
             if (flippedCards.length === 2) {
                 //배열 속 아이들을 비교하기.
-                console.log(flippedCards);
-                console.log(flippedIndex);
                 if (flippedCards[0] === flippedCards[1]) {
                     //배열 속 아이들이 같다면,
                     console.log('matched!');
-                    console.log(++CardMatchCount);
+                    setFlippedIndex([]);
+
+
                 } else {
                     //배열 속 아이들이 다르다면,
                     console.log('not matched!')
                     setIsFalse(true);
                 }
-
                 setFlippedCards([]);
-                setFlippedIndex([]);
             }
 
-        }, [flippedCards], [flippedIndex]);
+        }, [flippedCards]);
 
     return (
         <>
@@ -77,10 +74,10 @@ const CardGame = () => {
             {cards.map((card, index) => (
                 <Card 
                 key={index} 
-                image={`/img${card}.jpeg`} 
+                image={`/img${card}.jpg`} 
                 onClick={() => handleCardClick(card, index)}
                 isFalse={isFalse}
-                falseIndex={flippedIndex}
+                flippedIndex={flippedIndex.includes(index)}
                />
             ))}
         </CardWrapper>

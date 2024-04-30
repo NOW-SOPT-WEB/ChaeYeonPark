@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import CardGame from "./CardGame";
 
 
-const Card = ({image, onClick, isFalse, falseIndex}) => {
+const Card = ({index, image, onClick, isFalse, flippedIndex}) => {
     const [flipped, setFlipped] = useState(false);
 
     const handleClick = () => {
@@ -13,11 +13,14 @@ const Card = ({image, onClick, isFalse, falseIndex}) => {
     };
 
     useEffect(() => {
-        if (isFalse) {
-            setFlipped(false)
-             // isFalse가 true일 때 카드를 다시 뒤집음
-        }
+        // 만약 flippedIndex에 해당하는 카드면 뒤집음
+        if (isFalse && flippedIndex) {
+            setTimeout(()=> {
+                setFlipped(false)
+            }, 1000)  
+        } 
     }, [isFalse]);
+
 
     return(
         <CardWrapper className="card" onClick={handleClick}>
