@@ -30,7 +30,7 @@ function initializeCards() {
 }
 
 //이미지 두 개 판별하기
-const CardGame = () => {
+const CardGame = ( {setScore} ) => {
     const [cards, setCards] = useState(initializeCards());
     const [flippedCards, setFlippedCards] = useState([]);
     const [flippedIndex, setFlippedIndex] = useState([]);
@@ -56,7 +56,7 @@ const CardGame = () => {
                     //배열 속 아이들이 같다면,
                     console.log('matched!');
                     setFlippedIndex([]);
-
+                    setScore((prev) => prev + 1);
 
                 } else {
                     //배열 속 아이들이 다르다면,
@@ -66,7 +66,8 @@ const CardGame = () => {
                 setFlippedCards([]);
             }
 
-        }, [flippedCards]);
+        }, [flippedCards, setScore]);
+
 
     return (
         <>

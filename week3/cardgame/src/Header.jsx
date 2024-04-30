@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import theme from "./styles/theme";
 
-function Header() {
+const Header = ({score}) => {
     return (
         <>
         <HeaderWrapper theme={theme}>
             <h1>동물의 숲 카드게임</h1>
+            <h1>{score}/5</h1>
         </HeaderWrapper>
         </>
     );

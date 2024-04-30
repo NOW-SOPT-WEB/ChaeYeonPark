@@ -2,6 +2,7 @@ import Header from "./Header"
 import CardGame from "./CardGame"
 import { Global, css } from '@emotion/react';
 import styled from "@emotion/styled"
+import { useState } from "react";
 import theme from "./styles/theme";
 
 const globalStyles = css`
@@ -18,13 +19,14 @@ const CardGameWapper = styled.div`
 `
 
 function App() {
+  const [score, setScore] = useState(0);
   
   return (
     <>
     <Global styles={globalStyles} /> {/* 전역 스타일 적용 */}
-    <Header />
+    <Header score={score}/>
     <CardGameWapper>
-      <CardGame />
+      <CardGame setScore={setScore}/>
     </CardGameWapper>
     </>
   );
