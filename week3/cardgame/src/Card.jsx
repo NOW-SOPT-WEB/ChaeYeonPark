@@ -4,21 +4,20 @@ import styled from "@emotion/styled";
 import CardGame from "./CardGame";
 
 
-const Card = ({image, onClick, isFlipped}) => {
+const Card = ({image, onClick, isFalse, falseIndex}) => {
     const [flipped, setFlipped] = useState(false);
 
-    // useEffect(() => {
-    //     // 상위 컴포넌트로부터 isFlipped props가 변경될 때마다 flipped 상태 업데이트
-    //     setFlipped(isFlipped);
-    // }, [isFlipped]);
-
     const handleClick = () => {
-        if (!flipped) {
-            // 이미 뒤집힌 카드가 아닌 경우에만 클릭 이벤트 처리
             setFlipped(true);
             onClick();
-        }
     };
+
+    useEffect(() => {
+        if (isFalse) {
+            setFlipped(false)
+             // isFalse가 true일 때 카드를 다시 뒤집음
+        }
+    }, [isFalse]);
 
     return(
         <CardWrapper className="card" onClick={handleClick}>
