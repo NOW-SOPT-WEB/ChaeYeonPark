@@ -24,13 +24,18 @@ function App() {
       setShowModal(true);
     }
   }, [score]);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    window.location.reload()
+  };
   
   return (
     <>
     <Global styles={globalStyles} /> {/* 전역 스타일 적용 */}
     <Header score={score}/>
     <CardTable setScore={setScore} />
-    {showModal && <Modal />}
+    {showModal && <Modal onClose={handleCloseModal} />}
     </>
   );
 }
