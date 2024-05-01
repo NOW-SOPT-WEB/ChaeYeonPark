@@ -1,51 +1,51 @@
-import reset from 'emotion-reset';
-import {css} from '@emotion/react';
-
+import { css } from '@emotion/react';
 import theme from './theme';
 
 const globalStyle = css`
-  ${reset}
-  * {
-    box-sizing: border-box;
-  }
-
   html,
   body {
-    box-sizing: border-box; /* default */
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+  },
 
-    font-size: 62.5%;
-
-    background-color: ${theme.colors.backGroundGray}; //theme 컬러 가져오기
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
   }
 
-  input {
-    outline: none;
+  ol,
+  ul {
+    list-style: none;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    cursor: pointer;
+  blockquote,
+  q {
+    quotes: none;
   }
 
-  button {
-    font: inherit;
-
-    background: none;
-    cursor: pointer;
-    border: none;
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: "";
+    content: none;
   }
 
-  select {
-    cursor: pointer;
-  }
-
-  textarea {
-    outline: none;
-
-    resize: none;
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 `;
 

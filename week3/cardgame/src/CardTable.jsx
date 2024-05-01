@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { cards } from './shuffleArray'; // 상수 및 배열 가져오기
+import { cards } from './shuffleArray';
 import styled from "@emotion/styled";
 
 const CardTable = ({setScore}) => {
-    const [isClickable, setIsClickable] = useState(true);
+    const [isClickable, setIsClickable] = useState(true);                                  // 체크 가능한 상태를 확인하는 역할
     const [flippedCards, setFlippedCards] = useState(Array(cards.length).fill(false));     // 각 카드의 뒤집힌 상태를 관리할 배열
-    const [flippedCardsIndex, setFlippedCardsIndex] = useState([]);                          // 카드의 이름을 비교할 배열
+    const [flippedCardsIndex, setFlippedCardsIndex] = useState([]);                        // 카드의 이름을 비교할 배열
 
     // 카드 클릭 시
     const handleClick = (index) => {
@@ -29,16 +29,16 @@ const CardTable = ({setScore}) => {
         if(flippedCardsIndex.length === 2) {
             console.log('matchCheck');
             if (flippedCardsIndex[0].name === flippedCardsIndex[1].name) {
-                console.log('match')
+                // matched
+                console.log('matched')
                 setScore((prev) => prev + 1);
             } else {
-                console.log('not match')
-                //다시 뒤집기
+                // not matched
+                console.log('not matched')
                 setIsClickable(false);
                 setTimeout(() => {
                     // 두 카드를 다시 뒤집음
                     setFlippedCards(prevState => prevState.map((flipped, index) => {
-                        // 두 카드를 다시 뒤집음
                         if (flipped && flippedCardsIndex.includes(cards[index])) {
                                 return false;
                             }
@@ -47,6 +47,7 @@ const CardTable = ({setScore}) => {
                         setIsClickable(true);
                     }, 1000);
             }
+            // 배열 초기화
             setFlippedCardsIndex([]);
         }
      },[flippedCardsIndex])
@@ -69,13 +70,15 @@ export default CardTable;
 
 const CardWrapper = styled.div`
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    width: 90rem;
+
 `
 
 const ImgWrapper = styled.img`
-    border: 2px solid black;
+    border: 3px solid ${({theme}) => theme.colors.green};
     border-radius: 1rem;
+    margin: 0rem 0rem 0.5rem 0.5rem;
     width: 17rem;
     height: 20rem;
 `

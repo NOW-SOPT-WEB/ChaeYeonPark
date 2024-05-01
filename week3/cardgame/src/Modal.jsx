@@ -5,8 +5,7 @@ const Modal = ({ onClose }) => {
   return (
     <ModalWrapper>
       <ModalContent>
-        <h2>동물의 숲 카드게임</h2>
-        <p>축하합니다! 카드게임 성공!</p>
+        <h2>축하합니다! 동물의 숲 카드게임 성공!</h2>
         <button onClick={onClose}>닫기</button>
       </ModalContent>
     </ModalWrapper>
@@ -28,6 +27,9 @@ const ModalWrapper = styled.div`
 `;
 
 const ModalContent = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
     background-color: white;
     padding: 2rem;
     border-radius: 0.5rem;

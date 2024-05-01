@@ -2,9 +2,12 @@ import { Global, ThemeProvider } from '@emotion/react';
 import { useState, useEffect } from "react";
 import globalStyle from "./styles/globalStyle";
 import theme from "./styles/theme";
+import styled from "@emotion/styled";
 import Header from "./Header"
 import CardTable from "./CardTable";
 import Modal from "./Modal";
+
+
 
 function App() {
   const [score, setScore] = useState(0);
@@ -25,8 +28,10 @@ function App() {
     <>
     <Global styles={globalStyle} />
     <ThemeProvider theme = {theme}>
-        <Header score={score}/>
-        <CardTable setScore={setScore} />
+      <ContentWrapper>
+        <Header score = {score}/>
+        <CardTable setScore = {setScore} />
+      </ContentWrapper>
         {showModal && <Modal onClose={handleCloseModal} />}
     </ThemeProvider>
     </>
@@ -34,3 +39,9 @@ function App() {
 }
 
 export default App;
+
+const ContentWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`
