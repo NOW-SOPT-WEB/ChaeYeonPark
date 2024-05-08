@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { cards } from './shuffleArray';
 import styled from "@emotion/styled";
 
-const CardTable = ({setScore}) => {
+const CardTable = ({matchScore}) => {
     const [isClickable, setIsClickable] = useState(true);                                  // 체크 가능한 상태를 확인하는 역할
     const [flippedCards, setFlippedCards] = useState(Array(cards.length).fill(false));     // 각 카드의 뒤집힌 상태를 관리할 배열
     const [flippedCardsIndex, setFlippedCardsIndex] = useState([]);                        // 카드의 이름을 비교할 배열
@@ -18,33 +18,31 @@ const CardTable = ({setScore}) => {
             // 선택하는 카드 배열에 넣기
             const newFlippedCardsIndex = [...flippedCardsIndex, cards[index]]
             setFlippedCardsIndex(newFlippedCardsIndex);
-            console.log(flippedCardsIndex)
-        } else {
-            console.log("클릭 불가능");
-        }
+        } 
     };
+
+    // 두 카드 다시 뒤집기
+    const handleFlipCards = () => {
+        setFlippedCards(prevState => prevState.map((flipped, index) => {
+            if (flipped && flippedCardsIndex.includes(cards[index])) {
+                    return false;
+                }
+                return flipped;
+            }));
+            setIsClickable(true);
+    }
 
     // 배열 속 카드가 2개가 되었을 때, 비교 시작
     useEffect( () => {
         if(flippedCardsIndex.length === 2) {
-            console.log('matchCheck');
             if (flippedCardsIndex[0].name === flippedCardsIndex[1].name) {
                 // matched
-                console.log('matched')
-                setScore((prev) => prev + 1);
+                matchScore();
             } else {
                 // not matched
-                console.log('not matched')
                 setIsClickable(false);
                 setTimeout(() => {
-                    // 두 카드를 다시 뒤집음
-                    setFlippedCards(prevState => prevState.map((flipped, index) => {
-                        if (flipped && flippedCardsIndex.includes(cards[index])) {
-                                return false;
-                            }
-                            return flipped;
-                        }));
-                        setIsClickable(true);
+                    handleFlipCards();
                     }, 1000);
             }
             // 배열 초기화
@@ -53,10 +51,10 @@ const CardTable = ({setScore}) => {
      },[flippedCardsIndex])
 
     return (
-        <CardWrapper className="card">
+        <CardWrapper>
             {cards.map((card, index) => (
                 <ImgWrapper
-                    key={index}
+                    key={`card-${index}`}
                     src={flippedCards[index] ? card.src : "/animal.jpg"}
                     alt={card.name}
                     onClick={() => handleClick(index)}
@@ -72,7 +70,6 @@ const CardWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 90rem;
-
 `
 
 const ImgWrapper = styled.img`
