@@ -9,16 +9,7 @@ const colors = {
         pink: "#FF9B96"
     };
 
-const fonts = {
-        title: css`
-            font-family: 'TTLaundryGothicB';
-            font-size: 4rem;
-            font-weight: 700;
-            font-style: normal;
-         -`
-    };
 
 export const theme = {
-    colors,
-    fonts
+    colors
 };
