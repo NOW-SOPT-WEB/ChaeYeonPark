@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import loginCat from "../assets/img/cat.jpg"
-//import styled form "styled-components";
+import loginCat from "../assets/img/logincat.jpg"
+import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -40,34 +39,86 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <img src={loginCat} alt="pink" />
-            <div>
-                <p>ID</p>
-                <input 
+        <Layout>
+            <h1>로그인</h1>
+            <ImageWapper src={loginCat} alt="pink" />
+            <InputContainer>
+                <TextWapper>ID</TextWapper>
+                <InputWapper 
                     type="text"
                     value={userId}
                     onChange={(e) => setUserId(e.target.value)} />
-            </div>
-            <div>
-                <p>PW</p>
-                <input 
+            </InputContainer>
+            <InputContainer>
+                <TextWapper>PW</TextWapper>
+                <InputWapper 
                     type="text"
                     value={userPassword}
                     onChange={(e) => setUserPassword(e.target.value)} />
-            </div>
+            </InputContainer>
 
-            <div>
-                <button onClick={handleLogin}>로그인</button>
-                <button onClick={handleSignup}>회원가입</button>
-            </div>
+            <ButtonContainer>
+                <ButtonWapper onClick={handleLogin}>로그인</ButtonWapper>
+                <ButtonWapper onClick={handleSignup}>회원가입</ButtonWapper>
+            </ButtonContainer>
             
-        </div>
+        </Layout>
     )
 
 };
 
 
-
 export default LoginPage;
+
+const Layout = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10rem;
+    height: 45rem;
+    background-color: #C5DCFF;
+    border-radius: 5rem;
+`
+
+const TextWapper = styled.p`
+    margin-right: 1rem;
+    font-weight: bold;
+`
+
+const ImageWapper = styled.img`
+    width: 20rem;
+    border-radius: 1rem;
+`
+
+const InputContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+`
+
+const InputWapper = styled.input`
+    width: 15rem;
+    height: 2rem;
+    border-radius: 5rem;
+    font-size: 1.3rem
+`
+
+const ButtonContainer = styled.div`
+    margin: 1rem;
+`
+
+const ButtonWapper = styled.button`
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    background-color: #66A3FF;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #2A7FFF;
+    }
+`
