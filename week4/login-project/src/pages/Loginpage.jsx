@@ -81,14 +81,14 @@ const Layout = styled.div`
     border-radius: 5rem;
 `
 
-const TextWapper = styled.p`
-    margin-right: 1rem;
-    font-weight: bold;
-`
-
 const ImageWapper = styled.img`
     width: 20rem;
     border-radius: 1rem;
+`
+
+const TextWapper = styled.p`
+    margin-right: 1rem;
+    font-weight: bold;
 `
 
 const InputContainer = styled.div`
