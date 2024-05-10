@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignupPage = () => {
@@ -8,6 +9,7 @@ const SignupPage = () => {
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
     const [error, setError] = useState("");
 
+    const navigate = useNavigate();
     const handleSignup = async() => {
         try {
             const response = await axios.post("http://34.64.233.12:8080/member/join", {
@@ -18,15 +20,16 @@ const SignupPage = () => {
             });
             console.log(response.data);
             // 회원가입 성공 처리
-            if (response.data.success) {
-                alert(response.data.message); // 성공 메시지 표시
-            } else {
-                alert(response.data.message); // 실패한 경우 서버에서 받은 에러 메시지 표시
+            if (response.status === 201) {
+                alert(response.data.message);
+                navigate('/');
             }
+
         } catch (error) {
-            console.error("Error: ", error);
-            setError("회원가입에 실패했습니다.")
-        }
+            console.error("Error: ",error);
+            if (error.response && error.response.data) {
+                alert(error.response.data.message);
+            }}
     }
 
 

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import loginCat from "../assets/img/cat.jpg"
 //import styled form "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
@@ -20,14 +22,11 @@ const LoginPage = () => {
 
             // 서버 확인
             console.log(response.data);
+            if (response.status === 200) {
+                const memberId = response.headers.location;
+                navigate(`/main/${memberId}`);
+              }      
 
-            // 서버 통신 성공
-            if (response.data.success) {
-                alert(response.data.message); // 로그인 성공 메시지 표시
-                navigate("/main");
-            } else {
-                alert(response.data.message); // 로그인 실패한 경우 서버에서 받은 에러 메시지 표시
-            } 
         } catch (error) { // 서버 통신 실패
             console.error("Error: ",error);
             if (error.response && error.response.data) {
@@ -36,10 +35,14 @@ const LoginPage = () => {
         }
     }
 
+    const handleSignup = () => {
+        navigate('/signup')
+    }
+
     return (
         <div>
             <h1>Login</h1>
-            <img src="../assets/pink.jpg" alt="pink" />
+            <img src={loginCat} alt="pink" />
             <div>
                 <p>ID</p>
                 <input 
@@ -57,7 +60,7 @@ const LoginPage = () => {
 
             <div>
                 <button onClick={handleLogin}>로그인</button>
-                <Link to="Signup">회원가입</Link>
+                <button onClick={handleSignup}>회원가입</button>
             </div>
             
         </div>
