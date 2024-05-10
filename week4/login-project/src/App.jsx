@@ -1,14 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import LoginPage from './pages/LoginPage'
+import Router from './Router'
+import LoginPage from './pages/Loginpage'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <LoginPage />
+    <Router />
 
     </>
   )
