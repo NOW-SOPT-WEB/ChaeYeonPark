@@ -11,6 +11,7 @@ const SignupPage = () => {
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+
     const handleSignup = async() => {
         try {
             const response = await axios.post("http://34.64.233.12:8080/member/join", {
@@ -51,6 +52,9 @@ const SignupPage = () => {
                 value={userPassword}
                 onChange={(e) => setUserPassword(e.target.value)}  />
         </InputContainer>
+        
+        <CautionWapper>비밀번호 형식은 8자 이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다.</CautionWapper>
+
         <InputContainer>
             <TextWapper>닉네임</TextWapper>
             <InputWapper
@@ -65,6 +69,8 @@ const SignupPage = () => {
                 value={userPhoneNumber}
                 onChange={(e) => setUserPhoneNumber(e.target.value)}  />
         </InputContainer>
+
+        <CautionWapper>전화번호 형식은 010-****-**** 입니다.</CautionWapper>
 
         <ButtonWapper onClick={handleSignup}>회원가입 하기</ButtonWapper>
         {error && <p>{error}</p>}
@@ -90,6 +96,13 @@ const Layout = styled.div`
 const TextWapper = styled.p`
     margin-right: 1rem;
     font-weight: bold;
+`
+
+const CautionWapper = styled.p`
+    margin-right: 1rem;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: red;
 `
 
 const InputContainer = styled.div`
