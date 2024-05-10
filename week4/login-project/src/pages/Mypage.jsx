@@ -13,6 +13,7 @@ const MyPage = () => {
 
     const navigate = useNavigate();
 
+    /* 페이지가 로드되면, id값을 이용해 마이 페이지 정보를 get! */
     useEffect(() => {
         const getUserData = async () => {
             try {
@@ -39,10 +40,13 @@ const MyPage = () => {
 
     }, [id]);
 
+
+    /* handleToggle : 버튼을 클릭하면 토글을 보여주거나, 숨겨주는 함수 */
     const handleToggle = () => {
         setIsToggled(prevState => !prevState);
     }
 
+    /* handleChanegePw : 비밀번호 변경을 관리하는 함수, patch로 서버와 통신 */
     const handleChangePw = async() => {
 
         if (!prevPw || !newPw || !newPwVerification) {
@@ -70,6 +74,7 @@ const MyPage = () => {
         }
     }
 
+    /* handleMain : 메인 페이지로 이동하는 함수 */
     const handleMain = () => {
         navigate(`/main/${id}`)
     }

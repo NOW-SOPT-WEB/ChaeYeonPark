@@ -1,17 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import loginCat from "../assets/img/logincat.jpg"
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const LoginPage = () => {
 
     const [userId, setUserId] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
+    /* handleLogin : 로그인 버튼을 누르면 서버와 통신하는 함수 */
     const handleLogin = async() => {
         try {
             const response = await axios.post("http://34.64.233.12:8080/member/login", {
@@ -19,21 +19,20 @@ const LoginPage = () => {
                 password : userPassword
             });
 
-            // 서버 확인
-            console.log(response.data);
             if (response.status === 200) {
                 const memberId = response.headers.location;
                 navigate(`/main/${memberId}`);
               }      
 
-        } catch (error) { // 서버 통신 실패
-            console.error("Error: ",error);
+        } catch (error) {
+            console.error("Error: ", error);
             if (error.response && error.response.data) {
                 alert(error.response.data.message);
             }
         }
     }
 
+    /* handleSignup : 회원가입 페이지로 이동하는 함수 */
     const handleSignup = () => {
         navigate('/signup')
     }

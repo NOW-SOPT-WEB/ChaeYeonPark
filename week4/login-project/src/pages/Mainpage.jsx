@@ -3,14 +3,17 @@ import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom"
 
 const MainPage = () => {
-    const { id } = useParams(); 
+    const { id } = useParams(); // id값을 전달받는 useParams
 
     const navigate = useNavigate();
 
+
+    /* handleMypage : 마이 페이지로 이동하는 함수 */
     const handleMypage = () => {
         navigate(`/mypage/${id}`)
     }
 
+    /* handleSignup : 회원가입 페이지로 이동하는 함수 */
     const handleSignup = () => {
         navigate('/signup')
     }

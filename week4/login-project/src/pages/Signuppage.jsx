@@ -8,10 +8,10 @@ const SignupPage = () => {
     const [userPassword, setUserPassword] = useState("");
     const [userNickname, setUserNickname] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
-    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
+    /* handleSignup: 회원가입 버튼을 누르면 서버에 post 하는 함수 */
     const handleSignup = async() => {
         try {
             const response = await axios.post("http://34.64.233.12:8080/member/join", {
@@ -21,14 +21,13 @@ const SignupPage = () => {
                 phone : userPhoneNumber
             });
             console.log(response.data);
-            // 회원가입 성공 처리
             if (response.status === 201) {
                 alert(response.data.message);
                 navigate('/');
             }
 
         } catch (error) {
-            console.error("Error: ",error);
+            console.error("Error: ", error);
             if (error.response && error.response.data) {
                 alert(error.response.data.message);
             }}
@@ -73,7 +72,6 @@ const SignupPage = () => {
         <CautionWapper>전화번호 형식은 010-****-**** 입니다.</CautionWapper>
 
         <ButtonWapper onClick={handleSignup}>회원가입 하기</ButtonWapper>
-        {error && <p>{error}</p>}
         </Layout>
     )
 
