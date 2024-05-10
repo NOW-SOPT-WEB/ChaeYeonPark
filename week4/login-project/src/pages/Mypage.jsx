@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const MyPage = () => {
     const { id } = useParams(); 
     const [userData, setUserData] = useState({});
     const [isToggled, setIsToggled] = useState(false);
+    const [prevPw, setPrevPw] = useState("");
+    const [newPw, setNewPw] = useState("");
+    const [newPwVerification, setNewPwVerification] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getUserData = async () => {
@@ -37,6 +42,38 @@ const MyPage = () => {
         setIsToggled(prevState => !prevState);
     }
 
+    const handleChangePw = async() => {
+
+        if (!prevPw || !newPw || !newPwVerification) {
+            alert('비밀번호를 모두 입력해주세요.');
+            return;
+        }
+        
+        try {
+            const response = await axios.patch("http://34.64.233.12:8080/member/password", {
+                previousPassword: prevPw,
+                newPassword: newPw,
+                newPasswordVerification: newPwVerification,
+            }, {
+                headers: {
+                    memberId: id
+                }
+            });
+
+            if (response.status === 200) {
+                alert('비밀번호 변경이 완료되었습니다.')
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert(error.response.data.message)
+        }
+    }
+
+    const handleMain = () => {
+        navigate(`/main/${id}`)
+    }
+
+
     return (
     <>
     <h1>Mypage</h1>
@@ -64,19 +101,32 @@ const MyPage = () => {
     <>
     <div>
         <p>기존 비밀번호</p>
-        <input />
+        <input
+            type="text"
+            value={prevPw}
+            onChange={(e) => setPrevPw(e.target.value)} />
     </div>
     <div>
         <p>새로운 비밀번호</p>
-        <input />
+        <input
+            type="text"
+            value={newPw}
+            onChange={(e) => setNewPw(e.target.value)} />
     </div>
     <div>
         <p>비밀번호 확인</p>
-        <input />
+        <input
+            type="text"
+            value={newPwVerification}
+            onChange={(e) => setNewPwVerification(e.target.value)} />
     </div>
+
+    <button onClick={handleChangePw}>비밀번호 변경</button>
     </>
     : <p>비밀번호 변경하려면 클릭하세요</p>
     }
+
+    <button onClick={handleMain}>홈으로</button>
 
     </>  )  
 }
