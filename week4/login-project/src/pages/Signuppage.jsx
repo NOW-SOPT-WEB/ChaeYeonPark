@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 
 const SignupPage = () => {
     const [userId, setUserId] = useState("");
@@ -34,42 +35,89 @@ const SignupPage = () => {
 
 
     return (
-        <>
+        <Layout>
         <h1>회원가입 페이지</h1>
-        <div>
-            <p>ID</p>
-            <input
+        <InputContainer>
+            <TextWapper>ID</TextWapper>
+            <InputWapper
                 type="text"
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)} />
-        </div>
-        <div>
-            <p>비밀번호</p>
-            <input
+        </InputContainer>
+        <InputContainer>
+            <TextWapper>비밀번호</TextWapper>
+            <InputWapper
                 type="text"
                 value={userPassword}
                 onChange={(e) => setUserPassword(e.target.value)}  />
-        </div>
-        <div>
-            <p>닉네임</p>
-            <input
+        </InputContainer>
+        <InputContainer>
+            <TextWapper>닉네임</TextWapper>
+            <InputWapper
                 type="text"
                 value={userNickname}
                 onChange={(e) => setUserNickname(e.target.value)}  />
-        </div>
-        <div>
-            <p>전화번호</p>
-            <input
+        </InputContainer>
+        <InputContainer>
+            <TextWapper>전화번호</TextWapper>
+            <InputWapper
                 type="text"
                 value={userPhoneNumber}
                 onChange={(e) => setUserPhoneNumber(e.target.value)}  />
-        </div>
+        </InputContainer>
 
-        <button onClick={handleSignup}>회원가입 하기</button>
+        <ButtonWapper onClick={handleSignup}>회원가입 하기</ButtonWapper>
         {error && <p>{error}</p>}
-        </>
+        </Layout>
     )
 
 }
 
 export default SignupPage;
+
+const Layout = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10rem;
+    height: 45rem;
+    background-color: #C5DCFF;
+    border-radius: 5rem;
+`
+
+
+const TextWapper = styled.p`
+    margin-right: 1rem;
+    font-weight: bold;
+`
+
+const InputContainer = styled.div`
+    display: flex;
+    align-items: center;
+    width: 23rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+`
+
+const InputWapper = styled.input`
+    width: 15rem;
+    height: 2rem;
+    border-radius: 5rem;
+    font-size: 1.3rem
+`
+
+const ButtonWapper = styled.button`
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    background-color: #66A3FF;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #2A7FFF;
+    }
+`

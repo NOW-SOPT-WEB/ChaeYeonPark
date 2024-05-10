@@ -94,6 +94,8 @@ const TextWapper = styled.p`
 const InputContainer = styled.div`
     display: flex;
     align-items: center;
+    width: 18rem;
+    justify-content: space-between;
     margin-top: 1rem;
 `
 
