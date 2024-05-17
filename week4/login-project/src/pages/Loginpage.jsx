@@ -1,125 +1,70 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import loginCat from "../assets/img/logincat.jpg"
-import styled from "styled-components";
-import axios from 'axios'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import loginCat from '../assets/img/logincat.jpg';
+import styled from 'styled-components';
+import axios from 'axios';
+import Navigate from '../utils/navigate';
+import Layout from '../styles/Layout';
+import ButtonWrapper from '../styles/ButtonWrapper';
+import ImageWrapper from '../styles/ImageWrapper';
+import InputWrapper from '../styles/InputWrapper';
+import InputContainer from '../styles/InputContainer';
+import TextWapper from '../styles/TextWrapper';
 
 const LoginPage = () => {
-
-    const [userId, setUserId] = useState("");
-    const [userPassword, setUserPassword] = useState("");
+    const [userId, setUserId] = useState('');
+    const [userPassword, setUserPassword] = useState('');
 
     const navigate = useNavigate();
 
     /* handleLogin : 로그인 버튼을 누르면 서버와 통신하는 함수 */
-    const handleLogin = async() => {
+    const handleLogin = async () => {
         try {
-            const response = await axios.post("http://34.64.233.12:8080/member/login", {
-                authenticationId : userId,
-                password : userPassword
+            const response = await axios.post('http://34.64.233.12:8080/member/login', {
+                authenticationId: userId,
+                password: userPassword,
             });
 
             if (response.status === 200) {
                 const memberId = response.headers.location;
                 navigate(`/main/${memberId}`);
-              }      
-
+            }
         } catch (error) {
-            console.error("Error: ", error);
+            console.error('Error: ', error);
             if (error.response && error.response.data) {
                 alert(error.response.data.message);
             }
         }
-    }
+    };
 
     /* handleSignup : 회원가입 페이지로 이동하는 함수 */
     const handleSignup = () => {
-        navigate('/signup')
-    }
+        navigate(Navigate.goToSignup);
+    };
 
     return (
         <Layout>
             <h1>로그인</h1>
-            <ImageWapper src={loginCat} alt="pink" />
+            <ImageWrapper src={loginCat} alt="pink" />
             <InputContainer>
                 <TextWapper>ID</TextWapper>
-                <InputWapper 
-                    type="text"
-                    value={userId}
-                    onChange={(e) => setUserId(e.target.value)} />
+                <InputWrapper type="text" value={userId} onChange={(e) => setUserId(e.target.value)} />
             </InputContainer>
             <InputContainer>
                 <TextWapper>PW</TextWapper>
-                <InputWapper 
-                    type="text"
-                    value={userPassword}
-                    onChange={(e) => setUserPassword(e.target.value)} />
+                <InputWrapper type="text" value={userPassword} onChange={(e) => setUserPassword(e.target.value)} />
             </InputContainer>
 
             <ButtonContainer>
-                <ButtonWapper onClick={handleLogin}>로그인</ButtonWapper>
-                <ButtonWapper onClick={handleSignup}>회원가입</ButtonWapper>
+                <ButtonWrapper onClick={handleLogin}>로그인</ButtonWrapper>
+                <ButtonWrapper onClick={handleSignup}>회원가입</ButtonWrapper>
             </ButtonContainer>
-            
         </Layout>
-    )
-
+    );
 };
-
 
 export default LoginPage;
 
-const Layout = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10rem;
-    height: 45rem;
-    background-color: #C5DCFF;
-    border-radius: 5rem;
-`
-
-const ImageWapper = styled.img`
-    width: 20rem;
-    border-radius: 1rem;
-`
-
-const TextWapper = styled.p`
-    margin-right: 1rem;
-    font-weight: bold;
-`
-
-const InputContainer = styled.div`
-    display: flex;
-    align-items: center;
-    width: 18rem;
-    justify-content: space-between;
-    margin-top: 1rem;
-`
-
-const InputWapper = styled.input`
-    width: 15rem;
-    height: 2rem;
-    border-radius: 5rem;
-    font-size: 1.3rem
-`
-
 const ButtonContainer = styled.div`
     margin: 1rem;
-`
-
-const ButtonWapper = styled.button`
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    margin: 1rem;
-    border: none;
-    border-radius: 1rem;
-    color: white;
-    background-color: #66A3FF;
-    font-size: 1.3rem;
-    font-weight: bold;
-
-    &:hover {
-        background-color: #2A7FFF;
-    }
-`
+`;

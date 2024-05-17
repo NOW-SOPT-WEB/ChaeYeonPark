@@ -1,15 +1,7 @@
-import { useState } from 'react'
-import Router from './Router'
-import LoginPage from './pages/Loginpage'
+import Router from './Router';
 
 function App() {
-
-  return (
-    <>
-    <Router />
-
-    </>
-  )
+    return <Router />;
 }
 
-export default App
+export default App;
