@@ -4,7 +4,6 @@ import { deleteObject } from "../utils/deleteObject";
 
 const CheckType = () => {
     const [selectSopti, setSelectSopti] = useState(SOPTI_LIST);
-    //const [deleteValue, setDeleteValue] = useState('');
     let deleteValue;
     const [questionNumber, setQuestionNumber] = useState(0);
     const [click, setClick] = useState(0);
@@ -12,6 +11,7 @@ const CheckType = () => {
     const [question2, setQuestion2] = useState('');
     const [questionType, setQuestionType] = useState('meet');
     const [nextButton, setNextButton] = useState('다음으로');
+    const [renderComponent, setRenderComponent] = useState(true);
 
     //번호에 따라 질문 내용 바꾸기
     useEffect(() => {
@@ -38,7 +38,8 @@ const CheckType = () => {
                 setNextButton('결과보기')
                 break
         }
-    }, [questionNumber])
+
+    }, [questionNumber, renderComponent])
 
 
     const handleClickType1 = () => {
@@ -51,22 +52,20 @@ const CheckType = () => {
 
     const handleClickType = () => {
 
+        setQuestionNumber(prev => prev + 1);
+
         if (click === 1) {
             switch (questionType) {
                 case 'meet': 
-                    //setDeleteValue('B');
                     deleteValue = 'B';
                     break
                 case 'time':
-                    //setDeleteValue('N');
                     deleteValue = 'N';
                     break
                 case 'lead':
-                    //setDeleteValue('F');
                     deleteValue = 'F';
                     break
                 case 'plan':
-                    //setDeleteValue('P');
                     deleteValue = 'P';
                     break
             }
@@ -74,19 +73,15 @@ const CheckType = () => {
         if (click === 2) {
             switch (questionType) {
                 case 'meet': 
-                    //setDeleteValue('D');
                     deleteValue = 'D';
                     break
                 case 'time':
-                    //setDeleteValue('M');
                     deleteValue = 'M';
                     break
                 case 'lead':
-                    //setDeleteValue('L');
                     deleteValue = 'L';
                     break
                 case 'plan':
-                    //setDeleteValue('J');
                     deleteValue = 'J';
                     break
             }
@@ -95,21 +90,30 @@ const CheckType = () => {
         if (deleteValue) {
             const newSopti = deleteObject(selectSopti, questionType, deleteValue);
             setSelectSopti(newSopti);
-            setQuestionNumber(prev => prev + 1);
         }
 
-        console.log(selectSopti);
+        if (nextButton === '결과보기') {
+            setRenderComponent(false);
+        }
     };
 
 
     return (
         <div>
+        { renderComponent ? (
             <div>
-                <button onClick={handleClickType1}> {question1}</button>
-                <button onClick={handleClickType2}> {question2}</button>
+                <div>
+                    <button onClick={handleClickType1}> {question1}</button>
+                    <button onClick={handleClickType2}> {question2}</button>
+                </div>
+                <button onClick={handleClickType}>{nextButton}</button>
             </div>
-            <button onClick={handleClickType}>{nextButton}</button>
+        )
+        : <div>
+            당신의 SOPTI는? {JSON.stringify(selectSopti)}
         </div>
+        }
+            </div>
     )
 
 }
