@@ -6,25 +6,34 @@ const CheckType = () => {
     let selectSopti = SOPTI_LIST;
 
     let selectBox;
+    const [click, setClick] = useState(0);
     const [type, setType] = useState(0);
     //const [time, setTime] = useState(0);
     //const [lead, setLead] = useState(0);
     //const [plan, setPlan] = useState(0);
 
     const handleClickTypeD = () => {
-        setType(1)
-    }
+        setClick(1)
+    };
 
     const handleClickTypeB = () => {
-        setType(2)
-    }
+        setClick(2)
+    };
+
+    const handleClickType = () => {
+        if (click === 1) {setType(1)}
+        if (click === 2) {setType(2)}
+    };
 
     switch (type) {
         case 0:
         selectBox = 
             <div>
-                <button onClick={handleClickTypeD}>대면 회의를 선호한다.</button>
-                <button onClick={handleClickTypeB}>비대면 회의를 선호한다.</button>
+                <div>
+                    <button onClick={handleClickTypeD}>대면 회의를 선호한다.</button>
+                    <button onClick={handleClickTypeB}>비대면 회의를 선호한다.</button>
+                </div>
+                <button onClick={handleClickType}>다음으로</button>
             </div>
         break
 
