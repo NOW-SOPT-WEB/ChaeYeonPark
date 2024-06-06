@@ -1,3 +1,19 @@
+import BMLP from './assets/image/BMLP.jpg';
+import BMLJ from './assets/image/BMLJ.jpg';
+import BMFP from './assets/image/BMFP.jpg';
+import BMFJ from './assets/image/BMFJ.jpg'; 
+import BNLP from './assets/image/BNLP.jpg';
+import BNLJ from './assets/image/BNLJ.jpg';
+import BNFP from './assets/image/BNFP.jpg';
+import BNFJ from './assets/image/BNFJ.jpg';
+import DMLP from './assets/image/DMLP.jpg';
+import DMLJ from './assets/image/DMLJ.jpg';
+import DMFP from './assets/image/DMFP.jpg';
+import DMFJ from './assets/image/DMFJ.jpg';
+import DNLP from './assets/image/DNLP.jpg';
+import DNLJ from './assets/image/DNLJ.jpg';
+import DNFP from './assets/image/DNFP.jpg';
+import DNFJ from './assets/image/DNFJ.jpg';
 
 
 export const SOPTI_LIST = {
@@ -7,7 +23,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'L',
         plan: 'P',
-        image: 'assets/image/BMLP.jpg'
+        image: BMLP
     },
     BMLJ: {
         id: 1,
@@ -15,7 +31,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'L',
         plan: 'J',
-        image: 'assets/image/BMLJ.jpg'
+        image: BMLJ
     },
     BMFP: {
         id: 1,
@@ -23,7 +39,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'F',
         plan: 'P',
-        image: 'assets/image/BMFP.jpg'
+        image: BMFP
     },
 
     BMFJ: {
@@ -32,7 +48,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'F',
         plan: 'J',
-        image: 'assets/image/BMFJ.jpg'
+        image: BMFJ
     },
     BNLP: {
         id: 1,
@@ -40,7 +56,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'L',
         plan: 'P',
-        image: 'assets/image/BNLP.jpg'
+        image: BNLP
     },
     BNLJ: {
         id: 1,
@@ -48,7 +64,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'L',
         plan: 'J',
-        image: 'assets/image/BNLJ.jpg'
+        image: BNLJ
     },
     BNFP: {
         id: 1,
@@ -56,7 +72,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'F',
         plan: 'P',
-        image: 'assets/image/BNFP.jpg'
+        image: BNFP
     },
     BNFJ: {
         id: 1,
@@ -64,7 +80,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'F',
         plan: 'J',
-        image: 'assets/image/BNFJ.jpg'
+        image: BNFJ
     },
     DMLP: {
         id: 1,
@@ -72,7 +88,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'L',
         plan: 'P',
-        image: 'assets/image/DMLP.jpg'
+        image: DMLP
     },
     DMLJ: {
         id: 1,
@@ -80,7 +96,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'L',
         plan: 'J',
-        image: 'assets/image/DMLJ.jpg'
+        image: DMLJ
     },
     DMFP: {
         id: 1,
@@ -88,7 +104,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'F',
         plan: 'P',
-        image: 'assets/image/DMFP.jpg'
+        image: DMFP
     },
     DMFJ: {
         id: 1,
@@ -96,7 +112,7 @@ export const SOPTI_LIST = {
         time: 'M',
         lead: 'F',
         plan: 'J',
-        image: 'assets/image/DMFJ.jpg'
+        image: DMFJ
     },
     DNLP: {
         id: 1,
@@ -104,7 +120,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'L',
         plan: 'P',
-        image: 'assets/image/DNLP.jpg'
+        image: DNLP
     },
     DNLJ: {
         id: 1,
@@ -112,7 +128,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'L',
         plan: 'J',
-        image: 'assets/image/DNLJ.jpg'
+        image: DNLJ
     },
     DNFP: {
         id: 1,
@@ -120,7 +136,7 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'F',
         plan: 'P',
-        image: 'assets/image/DNFP.jpg'
+        image: DNFP
     },
     DNFJ: {
         id: 1,
@@ -128,6 +144,6 @@ export const SOPTI_LIST = {
         time: 'N',
         lead: 'F',
         plan: 'J',
-        image: 'assets/image/DNFJ.jpg'
+        image: DNFJ
     }
 }

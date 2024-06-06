@@ -110,7 +110,12 @@ const CheckType = () => {
             </div>
         )
         : <div>
-            당신의 SOPTI는? {JSON.stringify(selectSopti)}
+            <h2>당신의 SOPTI는?</h2>
+            {Object.keys(selectSopti).map(key => (
+                <img key={key} src={selectSopti[key].image} alt={key} />
+            ))}
+            <h3>{JSON.stringify(Object.keys(selectSopti))}</h3>
+
         </div>
         }
             </div>
