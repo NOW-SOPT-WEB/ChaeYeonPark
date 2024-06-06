@@ -18,12 +18,14 @@ const Main = () => {
         case 0:
             renderComponent = 
             <div>
+                <h2>원하는 SOPTI 유형보는 방식을 골라봐!</h2>
+
                 <button onClick={handleClickCheckType}>
-                    유형 검사하기
+                    SOPTI 유형 검사하기
                 </button>
                 
                 <button onClick={handleClickRandomType}>
-                    유형 랜덤으로 만나보기
+                    SOPTI 유형 랜덤으로 만나보기
                 </button>
             </div>
             break
@@ -37,7 +39,6 @@ const Main = () => {
 
     return(
         <div>
-            <p>본인의 유형을 선택해주세요!</p>
             {renderComponent}
         </div>
     );

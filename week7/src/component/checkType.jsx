@@ -5,16 +5,16 @@ import { handleClickReset } from "../utils/handleClickReset";
 
 const CheckType = () => {
     const [selectSopti, setSelectSopti] = useState(SOPTI_LIST);
-    const [questionNumber, setQuestionNumber] = useState(0);
     const [click, setClick] = useState(0);
     const [question1, setQuestion1] = useState('');
     const [question2, setQuestion2] = useState('');
+    const [questionNumber, setQuestionNumber] = useState(0);
     const [questionType, setQuestionType] = useState('meet');
+    const [deleteValue, setDeleteValue] = useState([]);
     const [nextButton, setNextButton] = useState('다음으로');
     const [renderComponent, setRenderComponent] = useState(true);
-    const [deleteValue, setDeleteValue] = useState([]);
 
-    //번호에 따라 질문 내용 바꾸기
+    // 질문 번호에 따라 질문 내용 바꾸기
     useEffect(() => {
         switch (questionNumber) {
             case 0:
@@ -42,20 +42,24 @@ const CheckType = () => {
 
     }, [questionNumber])
 
+    // 이전으로 버튼 클릭
     const handleClickPrev = () => {
         setNextButton('다음으로')
         setQuestionNumber(prev => prev - 1);
         setDeleteValue(prev => prev.slice(0, -1)); // 마지막 값 삭제
     };
 
+    // 첫번째 선택지 클릭
     const handleClickType1 = () => {
         setClick(1)
     };
 
+    // 두번째 선택지 클릭
     const handleClickType2 = () => {
         setClick(2)
     };
 
+    // 다음으로 버튼 클릭
     const handleClickType = () => {
         if (click === 1) {
             switch (questionType) {
@@ -93,6 +97,7 @@ const CheckType = () => {
         console.log(deleteValue);
     };
 
+    // 결과보기 버튼 클릭
     useEffect(() => {
         if (nextButton === '결과보기' && deleteValue.length > 0) {
             const newSopti = deleteObject({ ...selectSopti }, deleteValue);
@@ -105,6 +110,7 @@ const CheckType = () => {
         <div>
             { renderComponent ? (
                 <div>
+                    <h2>SOPTI 유형 검사하기</h2>
                     <div>
                         <button onClick={handleClickType1}> {question1}</button>
                         <button onClick={handleClickType2}> {question2}</button>
@@ -127,7 +133,6 @@ const CheckType = () => {
             }
         </div>
     )
-
 }
 
 export default CheckType;
