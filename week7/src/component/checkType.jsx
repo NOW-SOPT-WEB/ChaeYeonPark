@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { SOPTI_LIST } from "../data";
 import { deleteObject } from "../utils/deleteObject";
+import { handleClickReset } from "../utils/handleClickReset";
 
 const CheckType = () => {
     const [selectSopti, setSelectSopti] = useState(SOPTI_LIST);
-    let deleteValue;
     const [questionNumber, setQuestionNumber] = useState(0);
     const [click, setClick] = useState(0);
     const [question1, setQuestion1] = useState('');
@@ -12,6 +12,7 @@ const CheckType = () => {
     const [questionType, setQuestionType] = useState('meet');
     const [nextButton, setNextButton] = useState('다음으로');
     const [renderComponent, setRenderComponent] = useState(true);
+    const [deleteValue, setDeleteValue] = useState([]);
 
     //번호에 따라 질문 내용 바꾸기
     useEffect(() => {
@@ -39,8 +40,13 @@ const CheckType = () => {
                 break
         }
 
-    }, [questionNumber, renderComponent])
+    }, [questionNumber])
 
+    const handleClickPrev = () => {
+        setNextButton('다음으로')
+        setQuestionNumber(prev => prev - 1);
+        setDeleteValue(prev => prev.slice(0, -1)); // 마지막 값 삭제
+    };
 
     const handleClickType1 = () => {
         setClick(1)
@@ -51,74 +57,75 @@ const CheckType = () => {
     };
 
     const handleClickType = () => {
-
-        setQuestionNumber(prev => prev + 1);
-
         if (click === 1) {
             switch (questionType) {
                 case 'meet': 
-                    deleteValue = 'B';
+                    setDeleteValue(prev => [...prev, 'B']);
                     break
                 case 'time':
-                    deleteValue = 'N';
+                    setDeleteValue(prev => [...prev, 'N']);
                     break
                 case 'lead':
-                    deleteValue = 'F';
+                    setDeleteValue(prev => [...prev, 'F']);
                     break
                 case 'plan':
-                    deleteValue = 'P';
+                    setDeleteValue(prev => [...prev, 'P']);
                     break
             }
         }
         if (click === 2) {
             switch (questionType) {
                 case 'meet': 
-                    deleteValue = 'D';
+                    setDeleteValue(prev => [...prev, 'D']);
                     break
                 case 'time':
-                    deleteValue = 'M';
+                    setDeleteValue(prev => [...prev, 'M']);
                     break
                 case 'lead':
-                    deleteValue = 'L';
+                    setDeleteValue(prev => [...prev, 'L']);
                     break
                 case 'plan':
-                    deleteValue = 'J';
+                    setDeleteValue(prev => [...prev, 'J']);
                     break
             }
         }
-
-        if (deleteValue) {
-            const newSopti = deleteObject(selectSopti, questionType, deleteValue);
-            setSelectSopti(newSopti);
-        }
-
-        if (nextButton === '결과보기') {
-            setRenderComponent(false);
-        }
+        setQuestionNumber(prev => prev + 1);
+        console.log(deleteValue);
     };
 
+    useEffect(() => {
+        if (nextButton === '결과보기' && deleteValue.length > 0) {
+            const newSopti = deleteObject({ ...selectSopti }, deleteValue);
+            setSelectSopti(newSopti);
+            setRenderComponent(false);
+        }
+    }, [deleteValue]);
 
     return (
         <div>
-        { renderComponent ? (
-            <div>
+            { renderComponent ? (
                 <div>
-                    <button onClick={handleClickType1}> {question1}</button>
-                    <button onClick={handleClickType2}> {question2}</button>
-                </div>
-                <button onClick={handleClickType}>{nextButton}</button>
-            </div>
-        )
-        : <div>
-            <h2>당신의 SOPTI는?</h2>
-            {Object.keys(selectSopti).map(key => (
-                <img key={key} src={selectSopti[key].image} alt={key} />
-            ))}
-            <h3>{JSON.stringify(Object.keys(selectSopti))}</h3>
+                    <div>
+                        <button onClick={handleClickType1}> {question1}</button>
+                        <button onClick={handleClickType2}> {question2}</button>
+                    </div>
+                    <button onClick={handleClickPrev}>이전으로</button>
+                    <button onClick={handleClickType}>{nextButton}</button>
+                </div> )
+            : (
+            <div>
+                <h2>당신의 SOPTI는?</h2>
+                {Object.keys(selectSopti).map(key => (
+                    <div key={key}>
+                        <img src={selectSopti[key].image} alt={key} />
+                        <h3>{key}</h3>
+                    </div>
+                ))}
 
+                <button onClick={handleClickReset}>다시하기</button>
+            </div> )
+            }
         </div>
-        }
-            </div>
     )
 
 }
