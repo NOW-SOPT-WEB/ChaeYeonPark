@@ -4,11 +4,12 @@ import { deleteObject } from "../utils/deleteObject";
 
 const CheckType = () => {
     const [selectSopti, setSelectSopti] = useState(SOPTI_LIST);
-    const [deleteValue, setDeleteValue] = useState('');
+    //const [deleteValue, setDeleteValue] = useState('');
+    let deleteValue;
     const [questionNumber, setQuestionNumber] = useState(0);
     const [click, setClick] = useState(0);
-    const [question1, setQuestion1] = useState('대면 회의를 선호한다.');
-    const [question2, setQuestion2] = useState('비대면 회의를 선호한다.');
+    const [question1, setQuestion1] = useState('');
+    const [question2, setQuestion2] = useState('');
     const [questionType, setQuestionType] = useState('meet');
     const [nextButton, setNextButton] = useState('다음으로');
 
@@ -49,46 +50,55 @@ const CheckType = () => {
     };
 
     const handleClickType = () => {
+
         if (click === 1) {
             switch (questionType) {
                 case 'meet': 
-                    setDeleteValue('B');
+                    //setDeleteValue('B');
+                    deleteValue = 'B';
                     break
                 case 'time':
-                    setDeleteValue('N');
+                    //setDeleteValue('N');
+                    deleteValue = 'N';
                     break
                 case 'lead':
-                    setDeleteValue('F');
+                    //setDeleteValue('F');
+                    deleteValue = 'F';
                     break
                 case 'plan':
-                    setDeleteValue('P');
+                    //setDeleteValue('P');
+                    deleteValue = 'P';
                     break
             }
         }
         if (click === 2) {
             switch (questionType) {
                 case 'meet': 
-                    setDeleteValue('D');
+                    //setDeleteValue('D');
+                    deleteValue = 'D';
                     break
                 case 'time':
-                    setDeleteValue('M');
+                    //setDeleteValue('M');
+                    deleteValue = 'M';
                     break
                 case 'lead':
-                    setDeleteValue('L');
+                    //setDeleteValue('L');
+                    deleteValue = 'L';
                     break
                 case 'plan':
-                    setDeleteValue('J');
+                    //setDeleteValue('J');
+                    deleteValue = 'J';
                     break
             }
         }
 
         if (deleteValue) {
-            const newSopti = {...selectSopti};
-            deleteObject(newSopti, questionType, `${deleteValue}`);
+            const newSopti = deleteObject(selectSopti, questionType, deleteValue);
             setSelectSopti(newSopti);
             setQuestionNumber(prev => prev + 1);
-            console.log(selectSopti);
         }
+
+        console.log(selectSopti);
     };
 
 
