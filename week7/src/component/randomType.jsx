@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { suffleType } from "../utils/suffleType";
 import { SOPTI_LIST } from "../data";
+import SOPTI_IMAGE from '../assets/image/SOPTI.jpg'
+import { ContentLayout, ImageWrapper, SubButtonWrapper, SubContentLayout } from "../styles/styledComponent";
 
 const RandomType = () => {
     
@@ -18,17 +20,20 @@ const RandomType = () => {
     return(
         <div>
         {randomResult ? 
-            <div>
+            <ContentLayout>
                 <h2>랜덤 SOPT 유형은?</h2>
-                <img src={SOPTI_LIST[result].image} alt={result}></img>
-                <h2>{result}</h2>
-                <button onClick={handleClickReplay}>다시하기</button>
-            </div>
+                <SubContentLayout>
+                    <ImageWrapper src={SOPTI_LIST[result].image} alt={result}></ImageWrapper>
+                    <h3>우리가 랜덤으로 만나본 유형은 {result} 입니다!</h3>
+                    <SubButtonWrapper onClick={handleClickReplay}>다시하기</SubButtonWrapper>
+                </SubContentLayout>
+            </ContentLayout>
             : 
-            <div>
+            <ContentLayout>
                 <h2>SOPT 유형 랜덤으로 만나보기</h2>
-                <button onClick={handleClickStartRandom}>START</button>
-            </div>
+                <ImageWrapper src={SOPTI_IMAGE} alt='SOPTI 메인 이미지' />
+                <SubButtonWrapper onClick={handleClickStartRandom}>START</SubButtonWrapper>
+            </ContentLayout>
             }
         </div>
     )

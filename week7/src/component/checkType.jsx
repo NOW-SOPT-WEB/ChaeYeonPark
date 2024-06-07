@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SOPTI_LIST } from "../data";
 import CheckTypeQuestion from "./checkTypeQuestion";
+import { ContentLayout, SubButtonWrapper, ImageWrapper, SubContentLayout } from "../styles/styledComponent";
 
 const CheckType = () => {
     const [renderResult, setRenderResult] = useState(false);
@@ -21,17 +22,17 @@ const CheckType = () => {
         <div>
             { renderResult 
             ? (
-                <div>
-                    <h2>당신의 SOPTI는?</h2>
+                <ContentLayout>
+                    <h2>당신의 SOPTI는 바로?</h2>
                     {Object.keys(selectSopti).map(key => (
-                        <div key={key}>
-                            <img src={selectSopti[key].image} alt={key} />
-                            <h3>{key}</h3>
-                        </div>
+                        <SubContentLayout key={key}>
+                            <ImageWrapper src={selectSopti[key].image} alt={key} />
+                            <h3> {key} 입니다!</h3>
+                        </SubContentLayout>
                     ))}
     
-                    <button onClick={handleClickReset}>다시하기</button>
-                </div> )
+                    <SubButtonWrapper onClick={handleClickReset}>다시하기</SubButtonWrapper>
+                </ContentLayout> )
             : <CheckTypeQuestion 
             handleChangeSetFunction = {handleChangeSetFunction}
             selectSopti = {selectSopti} />

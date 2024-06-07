@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { deleteObject } from "../utils/deleteObject";
 import PropTypes from 'prop-types';
+import { ButtonContainer, ButtonWrapper, ContentLayout, SubButtonWrapper, ImageWrapper, DisableSubButtonWrapper } from "../styles/styledComponent";
+import SOPTI_IMAGE from '../assets/image/SOPTI.jpg'
 
 const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
     const [question, setQuestion] = useState(false);
@@ -61,9 +63,7 @@ const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
 
     // 다음으로 버튼 클릭
     const handleClickType = () => {
-        if (!click) {
-            alert ('한 개를 선택해주세요.')
-        } else {
+        if (click) {
             if (click === 1) {
                 switch (questionType) {
                     case 'meet': 
@@ -119,20 +119,27 @@ const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
         <div>
             { question
                 ? (
-                    <div>
+                    <ContentLayout>
                         <h2>SOPTI 유형 검사하기</h2>
-                        <div>
-                            <button onClick={handleClickType1}> {question1}</button>
-                            <button onClick={handleClickType2}> {question2}</button>
-                        </div>
-                        <button onClick={handleClickPrev}>이전으로</button>
-                        <button onClick={handleClickType}>{nextButton}</button>
-                    </div> )
+                        <ButtonContainer>
+                            <ButtonWrapper onClick={handleClickType1}> {question1}</ButtonWrapper>
+                            <ButtonWrapper onClick={handleClickType2}> {question2}</ButtonWrapper>
+                        </ButtonContainer>
+                        <ButtonContainer>
+                            <SubButtonWrapper onClick={handleClickPrev}>이전으로</SubButtonWrapper>
+                            { click 
+                            ? <SubButtonWrapper onClick={handleClickType}>{nextButton}</SubButtonWrapper>
+                            : <DisableSubButtonWrapper>{nextButton}</DisableSubButtonWrapper>
+                            }
+                            
+                        </ButtonContainer>
+                    </ContentLayout> )
                 : (
-                <div>
-                    <h2>SOPT 유형 검사하기</h2>
-                    <button onClick={handleClickStartType}>START</button>
-                </div> )
+                <ContentLayout>
+                    <h2>SOPTI 유형 검사하기</h2>
+                    <ImageWrapper src={SOPTI_IMAGE} alt='SOPTI 메인 이미지' />
+                    <SubButtonWrapper onClick={handleClickStartType}>START</SubButtonWrapper>
+                </ContentLayout> )
             }
 
         </div>
