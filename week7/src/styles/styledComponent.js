@@ -96,3 +96,8 @@ export const ButtonContainer = styled.div`
     display: flex;
     gap: 1rem;
 ` 
+
+//Count
+export const CountWrapper = styled.h2`
+    
+`

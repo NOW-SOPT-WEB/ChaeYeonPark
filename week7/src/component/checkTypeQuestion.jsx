@@ -99,7 +99,6 @@ const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
             }
             setClick(0);
             setQuestionNumber(prev => prev + 1);
-            console.log(deleteValue);
         }
     };
 
@@ -120,7 +119,7 @@ const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
             { question
                 ? (
                     <ContentLayout>
-                        <h2>SOPTI 유형 검사하기</h2>
+                        <h2>SOPTI 유형 검사하기 ({questionNumber + 1}/4)</h2>
                         <ButtonContainer>
                             <ButtonWrapper onClick={handleClickType1}> {question1}</ButtonWrapper>
                             <ButtonWrapper onClick={handleClickType2}> {question2}</ButtonWrapper>
@@ -150,7 +149,7 @@ const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
 
 }
 
-// PropTypes를 사용하여 props의 타입을 정의합니다.
+// PropTypes를 사용하여 props의 타입을 정의
 CheckTypeQuestion.propTypes = {
     handleChangeSetFunction: PropTypes.func.isRequired, // 필수 함수형 props
     selectSopti: PropTypes.object.isRequired, // 필수 객체형 props

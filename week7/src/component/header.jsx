@@ -1,10 +1,12 @@
-import { handleClickReset } from "../utils/handleClickReset";
 import { HeaderLayout, HeaderTitle, HeaderButton } from "../styles/styledComponent";
 import PropTypes from 'prop-types';
 
 const Header = ({method}) => {
 
-    console.log(method)
+    const handleClickReset = () => {
+        window.location.reload();
+    }
+
     return (
         <HeaderLayout>
             <HeaderTitle>🔍 당신의 SOPTI는 무엇일까요?</HeaderTitle>

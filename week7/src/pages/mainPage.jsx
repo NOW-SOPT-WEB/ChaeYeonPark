@@ -1,10 +1,10 @@
 import { useState } from "react";
-import CheckType from "./checkType";
-import RandomType from "./randomType";
-import Header from "./header";
+import CheckType from "../component/checkType";
+import RandomType from "../component/randomType";
+import Header from "../component/header";
 import { ContentLayout, ButtonWrapper, ButtonContainer } from "../styles/styledComponent";
 
-const Main = () => {
+const MainPage = () => {
     let renderComponent;
     const [method, setMethod] = useState(0);
 
@@ -48,6 +48,6 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default MainPage;
 
 
