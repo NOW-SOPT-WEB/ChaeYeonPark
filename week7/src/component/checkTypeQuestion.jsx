@@ -126,7 +126,10 @@ const CheckTypeQuestion = ({ handleChangeSetFunction, selectSopti }) => {
                             <ButtonWrapper onClick={handleClickType2}> {question2}</ButtonWrapper>
                         </ButtonContainer>
                         <ButtonContainer>
-                            <SubButtonWrapper onClick={handleClickPrev}>이전으로</SubButtonWrapper>
+                            { questionNumber
+                            ? <SubButtonWrapper onClick={handleClickPrev}>이전으로</SubButtonWrapper>
+                            : <DisableSubButtonWrapper>이전으로</DisableSubButtonWrapper>
+                            }
                             { click 
                             ? <SubButtonWrapper onClick={handleClickType}>{nextButton}</SubButtonWrapper>
                             : <DisableSubButtonWrapper>{nextButton}</DisableSubButtonWrapper>
