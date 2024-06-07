@@ -7,7 +7,7 @@ const RandomType = () => {
     const [randomResult, setRandomResult] = useState(false);
     const result = suffleType(SOPTI_LIST);
 
-    const handleClickRandom = () => {
+    const handleClickStartRandom = () => {
         setRandomResult(true);
     }
 
@@ -27,7 +27,7 @@ const RandomType = () => {
             : 
             <div>
                 <h2>SOPT 유형 랜덤으로 만나보기</h2>
-                <button onClick={handleClickRandom}>랜덤 추천</button>
+                <button onClick={handleClickStartRandom}>START</button>
             </div>
             }
         </div>
