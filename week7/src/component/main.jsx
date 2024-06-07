@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CheckType from "./checkType";
 import RandomType from "./randomType";
+import Header from "./header";
 import { ContentLayout, ButtonWrapper, ButtonContainer } from "../styles/styledComponent";
 
 const Main = () => {
@@ -41,6 +42,7 @@ const Main = () => {
 
     return(
         <div>
+            <Header method={method}/>
             {renderComponent}
         </div>
     );
