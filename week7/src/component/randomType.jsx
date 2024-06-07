@@ -5,11 +5,12 @@ import SOPTI_IMAGE from '../assets/image/SOPTI.jpg'
 import { ContentLayout, ImageWrapper, SubButtonWrapper, SubContentLayout, CountWrapper } from "../styles/styledComponent";
 
 const RandomType = () => {
-    const [count, setCount] = useState(3);
+    const [count, setCount] = useState(0);
     const [randomResult, setRandomResult] = useState(false);
     const result = suffleType(SOPTI_LIST);
 
 
+    // 카운트다운
     useEffect(() => {
         if (count > 0) {
             const timer = setTimeout(() => setCount(count - 1), 1000);
