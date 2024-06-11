@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 //Header
 export const HeaderLayout = styled.div`
@@ -98,6 +98,38 @@ export const ButtonContainer = styled.div`
 ` 
 
 //Count
-export const CountWrapper = styled.h2`
+const countAnimation = keyframes`
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    16% {
+        transform: scale(1.5);
+        opacity: 0.5;
     
+    }
+    33% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    47% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    66% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    87% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+`
+export const CountWrapper = styled.h2`
+    font-size: 3rem;
+    animation: ${countAnimation} 3s ease-in-out;
 `

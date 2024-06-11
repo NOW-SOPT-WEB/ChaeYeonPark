@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { suffleType } from "../utils/suffleType";
+import { shuffleType } from "../utils/shuffleType";
 import { SOPTI_LIST } from "../data";
 import SOPTI_IMAGE from '../assets/image/SOPTI.jpg'
 import { ContentLayout, ImageWrapper, SubButtonWrapper, SubContentLayout, CountWrapper } from "../styles/styledComponent";
@@ -7,7 +7,7 @@ import { ContentLayout, ImageWrapper, SubButtonWrapper, SubContentLayout, CountW
 const RandomType = () => {
     const [count, setCount] = useState(0);
     const [randomResult, setRandomResult] = useState(false);
-    const result = suffleType(SOPTI_LIST);
+    const result = shuffleType(SOPTI_LIST);
 
 
     // 카운트다운
